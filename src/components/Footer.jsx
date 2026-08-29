@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
+import logoUrl from '../assets/logos/logo.png';
 
 const Footer = () => {
   return (
@@ -9,9 +10,13 @@ const Footer = () => {
           
           {/* Brand Info */}
           <div className="flex flex-col gap-4">
-            <span className="text-xl md:text-2xl font-bold tracking-tighter text-white">
-              <span className="text-primary">MAHABIR</span> HOME HEALTH CARE
-            </span>
+            <a href="#home" className="inline-block w-fit">
+              <img 
+                src={logoUrl} 
+                alt="Mahabir Home Health Care" 
+                className="h-14 sm:h-16 w-auto object-contain" 
+              />
+            </a>
             <p className="text-sm leading-relaxed text-slate-400 max-w-sm">
               Providing compassionate, hospital-quality nursing and health care services directly to your doorstep. 24/7 round-the-clock professional support.
             </p>

@@ -19,26 +19,26 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen w-full overflow-hidden bg-slate-900">
+    <section id="home" className="relative min-h-[85vh] md:min-h-[90vh] w-full overflow-hidden bg-slate-900">
       {/* Image Slider */}
       <AnimatePresence mode="popLayout">
         <motion.img
           key={currentImageIndex}
           src={heroImages[currentImageIndex]}
           alt="Home Health Care"
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
       </AnimatePresence>
       {/* Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-800/70 to-slate-900/40 z-0"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/20 to-transparent z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-800/50 to-slate-900/10 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10 to-transparent z-0"></div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center pt-24 pb-12">
+      <div className="relative z-10 min-h-[85vh] md:min-h-[90vh] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center pt-24 pb-12">
         
         <div className="flex-1 flex flex-col justify-center w-full">
           <motion.div

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, PhoneCall } from 'lucide-react';
+import logoUrl from '../assets/logos/logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,8 +32,12 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <a href="#home" className={`text-lg sm:text-xl md:text-2xl font-bold tracking-tighter ${isScrolled ? 'text-secondary' : 'text-white drop-shadow-md'}`}>
-              <span className="text-primary">MAHABIR</span> HOME HEALTH CARE
+            <a href="#home" className="flex items-center">
+              <img 
+                src={logoUrl} 
+                alt="Mahabir Home Health Care" 
+                className={`h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300 ${!isScrolled ? 'drop-shadow-lg' : ''}`}
+              />
             </a>
           </div>
 
