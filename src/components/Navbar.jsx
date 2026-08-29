@@ -18,6 +18,7 @@ const Navbar = () => {
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Services', href: '#services' },
+    { name: 'Why Us', href: '#why-choose-us' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -32,12 +33,17 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <a href="#home" className="flex items-center">
+            <a href="#home" className="flex items-center gap-3">
               <img 
                 src={logoUrl} 
-                alt="Mahabir Home Health Care" 
-                className={`h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300 ${!isScrolled ? 'drop-shadow-lg' : ''}`}
+                alt="Mahabir Home Health Care Logo" 
+                className={`h-10 sm:h-12 lg:h-14 w-auto object-contain transition-all duration-300 ${!isScrolled ? 'drop-shadow-md' : ''}`}
               />
+              <div className={`flex flex-col font-bold tracking-tighter ${isScrolled ? 'text-secondary' : 'text-white drop-shadow-md'}`}>
+                <span className="text-lg sm:text-xl lg:text-2xl whitespace-nowrap">
+                  <span className="text-primary">MAHABIR</span> HOME HEALTH CARE
+                </span>
+              </div>
             </a>
           </div>
 

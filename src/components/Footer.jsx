@@ -10,12 +10,15 @@ const Footer = () => {
           
           {/* Brand Info */}
           <div className="flex flex-col gap-4">
-            <a href="#home" className="inline-block w-fit">
+            <a href="#home" className="flex items-center gap-3 w-fit">
               <img 
                 src={logoUrl} 
-                alt="Mahabir Home Health Care" 
-                className="h-14 sm:h-16 w-auto object-contain" 
+                alt="Mahabir Home Health Care Logo" 
+                className="h-10 sm:h-12 w-auto object-contain" 
               />
+              <span className="text-xl md:text-2xl font-bold tracking-tighter text-white">
+                <span className="text-primary">MAHABIR</span> HOME HEALTH CARE
+              </span>
             </a>
             <p className="text-sm leading-relaxed text-slate-400 max-w-sm">
               Providing compassionate, hospital-quality nursing and health care services directly to your doorstep. 24/7 round-the-clock professional support.
@@ -29,6 +32,7 @@ const Footer = () => {
               <a href="#home" className="hover:text-primary transition-colors w-fit">Home</a>
               <a href="#about" className="hover:text-primary transition-colors w-fit">About Us</a>
               <a href="#services" className="hover:text-primary transition-colors w-fit">Our Services</a>
+              <a href="#why-choose-us" className="hover:text-primary transition-colors w-fit">Why Choose Us</a>
               <a href="#gallery" className="hover:text-primary transition-colors w-fit">Gallery</a>
               <a href="#contact" className="hover:text-primary transition-colors w-fit">Contact Us</a>
             </div>
@@ -57,7 +61,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 text-center text-sm flex flex-col items-center gap-2">
-          <p>&copy; {new Date().getFullYear()} Mahabir Home Health Care. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Mahabir Home Health Care</p>
           <p className="flex items-center gap-1 flex-wrap justify-center">
             Developed & Designed by 
             <a
