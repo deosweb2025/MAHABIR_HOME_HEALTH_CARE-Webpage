@@ -9,25 +9,16 @@ import pic1 from '../assets/images/pic1.png';
 import pic2 from '../assets/images/pic2.png';
 import pic3 from '../assets/images/pic3.png';
 import pic4 from '../assets/images/pic4.jpeg';
-import pic12 from '../assets/images/pic12.jpeg';
-import pic13 from '../assets/images/pic13.jpeg';
-import pic14 from '../assets/images/pic14.jpeg';
 
 // Images mistakenly placed in videos folder
 import pic5 from '../assets/videos/pic5.jpeg';
 import pic6 from '../assets/videos/pic6.jpeg';
 import pic7 from '../assets/videos/pic7.jpeg';
-import pic8 from '../assets/videos/pic8.jpeg';
 import pic9 from '../assets/videos/pic9.jpeg';
 import pic10 from '../assets/videos/pic10.jpeg';
-import pic11 from '../assets/videos/pic11.jpeg';
 
 // Videos
-import video1 from '../assets/videos/video 1.mp4';
-import video2 from '../assets/videos/videos 2.mp4';
-import video3 from '../assets/videos/videos 3.mp4';
 import video4 from '../assets/videos/videos4.mp4';
-import video5 from '../assets/videos/videos5.mp4';
 
 const galleryData = [
   // Images
@@ -40,19 +31,10 @@ const galleryData = [
   { type: 'image', src: pic5, title: "Specialized Care" },
   { type: 'image', src: pic6, title: "Health Monitoring" },
   { type: 'image', src: pic7, title: "Senior Support" },
-  { type: 'image', src: pic8, title: "Quality Healthcare" },
   { type: 'image', src: pic9, title: "Home Nursing" },
   { type: 'image', src: pic10, title: "Dedicated Staff" },
-  { type: 'image', src: pic11, title: "Daily Assistance" },
-  { type: 'image', src: pic12, title: "Medical Support" },
-  { type: 'image', src: pic13, title: "Trusted Professionals" },
-  { type: 'image', src: pic14, title: "Patient Recovery" },
   // Videos
-  { type: 'video', src: video1, title: "Our Facilities in Action" },
-  { type: 'video', src: video2, title: "Patient Care Journey" },
-  { type: 'video', src: video3, title: "Physical Therapy Session" },
   { type: 'video', src: video4, title: "Home Health Support" },
-  { type: 'video', src: video5, title: "Dedicated Team Work" },
 ];
 
 const Gallery = () => {
@@ -144,7 +126,7 @@ const Gallery = () => {
         </div>
 
         {/* Grid Display */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[250px] transition-all duration-500">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 auto-rows-[250px] transition-all duration-500">
           <AnimatePresence mode="popLayout">
             {displayedData.map((item, index) => (
               <motion.div
@@ -155,7 +137,7 @@ const Gallery = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
                 onClick={() => setSelectedItem(item)}
-                className={`relative rounded-xl overflow-hidden group cursor-pointer shadow-sm hover:shadow-xl ${
+                className={`relative rounded-2xl overflow-hidden group cursor-pointer bg-white border-4 md:border-[6px] border-slate-100 shadow-sm hover:shadow-xl hover:border-primary/20 ${
                   index === 0 && displayedData.length >= 3 ? 'md:col-span-2 md:row-span-2' : ''
                 }`}
               >

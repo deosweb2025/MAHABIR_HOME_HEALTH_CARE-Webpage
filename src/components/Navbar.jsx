@@ -20,6 +20,7 @@ const Navbar = () => {
     { name: 'Services', href: '#services' },
     { name: 'Why Us', href: '#why-choose-us' },
     { name: 'Gallery', href: '#gallery' },
+    { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -39,16 +40,17 @@ const Navbar = () => {
                 alt="Mahabir Home Health Care Logo" 
                 className={`h-10 sm:h-12 lg:h-14 w-auto object-contain transition-all duration-300 ${!isScrolled ? 'drop-shadow-md' : ''}`}
               />
-              <div className={`flex flex-col font-bold tracking-tighter ${isScrolled ? 'text-secondary' : 'text-white drop-shadow-md'}`}>
-                <span className="text-lg sm:text-xl lg:text-2xl whitespace-nowrap">
-                  <span className="text-primary">MAHABIR</span> HOME HEALTH CARE
+              <div className={`flex flex-col font-bold tracking-tighter leading-tight sm:leading-normal ${isScrolled ? 'text-secondary' : 'text-white drop-shadow-md'}`}>
+                <span className="text-sm sm:text-lg lg:text-xl max-w-[140px] sm:max-w-none sm:whitespace-nowrap flex-wrap">
+                  <span className="text-primary block sm:inline">MAHABIR</span>{' '}
+                  <span className="block sm:inline">HOME HEALTH CARE</span>
                 </span>
               </div>
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -65,12 +67,12 @@ const Navbar = () => {
               className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-full font-medium transition-colors flex items-center gap-2 shadow-md hover:shadow-lg"
             >
               <PhoneCall size={18} />
-              <span>9330391658</span>
+              <span>Call Now</span>
             </a>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`p-2 rounded-md ${isScrolled ? 'text-slate-800' : 'text-white'}`}
@@ -83,7 +85,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-xl absolute w-full left-0 top-full flex flex-col">
+        <div className="lg:hidden bg-white shadow-xl absolute w-full left-0 top-full flex flex-col">
           <div className="px-4 pt-2 pb-6 space-y-2">
             {navLinks.map((link) => (
               <a

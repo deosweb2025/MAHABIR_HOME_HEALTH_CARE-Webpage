@@ -16,8 +16,9 @@ const Footer = () => {
                 alt="Mahabir Home Health Care Logo" 
                 className="h-10 sm:h-12 w-auto object-contain" 
               />
-              <span className="text-xl md:text-2xl font-bold tracking-tighter text-white">
-                <span className="text-primary">MAHABIR</span> HOME HEALTH CARE
+              <span className="text-lg md:text-xl lg:text-2xl font-bold tracking-tighter text-white max-w-[150px] sm:max-w-none">
+                <span className="text-primary block sm:inline">MAHABIR</span>{' '}
+                <span className="block sm:inline">HOME HEALTH CARE</span>
               </span>
             </a>
             <p className="text-sm leading-relaxed text-slate-400 max-w-sm">
@@ -34,6 +35,7 @@ const Footer = () => {
               <a href="#services" className="hover:text-primary transition-colors w-fit">Our Services</a>
               <a href="#why-choose-us" className="hover:text-primary transition-colors w-fit">Why Choose Us</a>
               <a href="#gallery" className="hover:text-primary transition-colors w-fit">Gallery</a>
+              <a href="#testimonials" className="hover:text-primary transition-colors w-fit">Testimonials</a>
               <a href="#contact" className="hover:text-primary transition-colors w-fit">Contact Us</a>
             </div>
           </div>
