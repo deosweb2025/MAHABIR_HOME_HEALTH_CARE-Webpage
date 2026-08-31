@@ -137,39 +137,51 @@ const Gallery = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
                 onClick={() => setSelectedItem(item)}
-                className={`relative rounded-2xl overflow-hidden group cursor-pointer bg-white border-4 md:border-[6px] border-slate-100 shadow-sm hover:shadow-xl hover:border-primary/20 ${
+                className={`group relative rounded-2xl p-[3px] cursor-pointer bg-white shadow-md transition-shadow duration-300 hover:shadow-xl ${
                   index === 0 && displayedData.length >= 3 ? 'md:col-span-2 md:row-span-2' : ''
                 }`}
               >
-                {item.type === 'image' ? (
-                  <img 
-                    src={item.src} 
-                    alt={item.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="relative w-full h-full bg-slate-900">
-                    <video 
-                      src={item.src}
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-                      muted
-                      playsInline
+                {/* Hover Gradient Border Layer */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+                
+                {/* Inner Image Container */}
+                <div className="relative w-full h-full rounded-xl overflow-hidden z-10 bg-slate-900">
+                  {item.type === 'image' ? (
+                    <img 
+                      src={item.src} 
+                      alt={item.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-primary/90 transition-colors duration-300">
-                        <Play className="text-white ml-1" size={24} fill="currentColor" />
+                  ) : (
+                    <div className="relative w-full h-full bg-slate-900">
+                      <video 
+                        src={item.src}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        muted
+                        playsInline
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                        <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-primary/90 transition-colors duration-500">
+                          <Play className="text-white ml-1" size={24} fill="currentColor" />
+                        </div>
                       </div>
                     </div>
+                  )}
+                  
+                  {/* Subtle Darkening Overlay */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10"></div>
+                  
+                  {/* Modern Capsule Text Overlay */}
+                  <div className="absolute bottom-4 left-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-3 group-hover:translate-y-0">
+                    <div className="bg-black/50 backdrop-blur-sm rounded-xl p-4 flex flex-col items-start border border-white/10 shadow-lg">
+                      <span className="text-white font-semibold text-sm md:text-base font-sans drop-shadow-md">
+                        {item.title}
+                      </span>
+                      <span className="text-teal-300 text-xs md:text-sm capitalize font-medium font-sans mt-1">
+                        View {item.type}
+                      </span>
+                    </div>
                   </div>
-                )}
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <span className="text-white font-semibold text-lg drop-shadow-md transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    {item.title}
-                  </span>
-                  <span className="text-primary-light text-sm capitalize font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                    View {item.type}
-                  </span>
                 </div>
               </motion.div>
             ))}

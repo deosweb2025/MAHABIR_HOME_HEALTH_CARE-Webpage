@@ -52,15 +52,24 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-slate-100 hover:shadow-[0_8px_30px_rgba(13,148,136,0.1)] transition-all group"
+              className="group relative rounded-2xl overflow-hidden bg-slate-100 p-[3px] shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(13,148,136,0.15)] transition-shadow duration-300"
             >
-              <div className="w-16 h-16 rounded-xl bg-teal-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                {reason.icon}
+              {/* Animated Border (Radar/Snake Glow) */}
+              <div 
+                className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0_280deg,rgba(13,148,136,0.8)_320deg,rgba(52,211,153,1)_360deg)] opacity-100 transition-opacity duration-500 animate-[spin_2s_linear_infinite]" 
+                style={{ width: '250%', height: '250%', top: '-75%', left: '-75%' }}
+              ></div>
+              
+              {/* Card Inner Content */}
+              <div className="relative h-full bg-white rounded-xl p-8 flex flex-col z-10 transition-all duration-300">
+                <div className="w-16 h-16 rounded-xl bg-teal-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {reason.icon}
+                </div>
+                <h4 className="text-xl font-bold text-slate-800 mb-3">{reason.title}</h4>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  {reason.description}
+                </p>
               </div>
-              <h4 className="text-xl font-bold text-slate-800 mb-3">{reason.title}</h4>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                {reason.description}
-              </p>
             </motion.div>
           ))}
         </div>
