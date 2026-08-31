@@ -30,7 +30,7 @@ const Navbar = () => {
         isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
@@ -50,12 +50,12 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
+          <div className="hidden lg:flex items-center space-x-4 lg:space-x-5">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`text-base font-medium transition-colors hover:text-primary ${
                   isScrolled ? 'text-slate-700' : 'text-white/90 drop-shadow-sm'
                 }`}
               >
@@ -64,7 +64,7 @@ const Navbar = () => {
             ))}
             <a
               href="tel:+919330391658"
-              className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-full font-medium transition-colors flex items-center gap-2 shadow-md hover:shadow-lg"
+              className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center gap-2 shadow-md hover:shadow-lg ml-2"
             >
               <PhoneCall size={18} />
               <span>Call Now</span>
