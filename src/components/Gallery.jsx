@@ -1,31 +1,103 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, Play, Image as ImageIcon, Film, Grid } from 'lucide-react';
 
-import doc1 from '../assets/images/confident-female-doctor-with-reports-clipboard-standing-against-male-patient-hospital.jpg';
+// Images
 import ped1 from '../assets/images/portrait-female-pediatrician-work.jpg';
-import elder1 from '../assets/images/realistic-scene-with-elderly-care-senior-people.jpg';
 import banner from '../assets/images/banner for mahabir home health care services.jpeg';
 import pic1 from '../assets/images/pic1.png';
 import pic2 from '../assets/images/pic2.png';
+import pic3 from '../assets/images/pic3.png';
+import pic4 from '../assets/images/pic4.jpeg';
+import pic12 from '../assets/images/pic12.jpeg';
+import pic13 from '../assets/images/pic13.jpeg';
+import pic14 from '../assets/images/pic14.jpeg';
+
+// Images mistakenly placed in videos folder
+import pic5 from '../assets/videos/pic5.jpeg';
+import pic6 from '../assets/videos/pic6.jpeg';
+import pic7 from '../assets/videos/pic7.jpeg';
+import pic8 from '../assets/videos/pic8.jpeg';
+import pic9 from '../assets/videos/pic9.jpeg';
+import pic10 from '../assets/videos/pic10.jpeg';
+import pic11 from '../assets/videos/pic11.jpeg';
+
+// Videos
+import video1 from '../assets/videos/video 1.mp4';
+import video2 from '../assets/videos/videos 2.mp4';
+import video3 from '../assets/videos/videos 3.mp4';
+import video4 from '../assets/videos/videos4.mp4';
+import video5 from '../assets/videos/videos5.mp4';
 
 const galleryData = [
-  { src: banner, title: "Mahabir Home Health Care" },
-  { src: elder1, title: "Elder Care Services" },
-  { src: doc1, title: "Professional Nursing Care" },
-  { src: ped1, title: "Child & Baby Care" },
-  { src: pic1, title: "Physiotherapy & Rehab" },
-  { src: pic2, title: "24/7 Dedicated Support" }
+  // Images
+  { type: 'image', src: banner, title: "Mahabir Home Health Care" },
+  { type: 'image', src: ped1, title: "Child & Baby Care" },
+  { type: 'image', src: pic1, title: "Physiotherapy & Rehab" },
+  { type: 'image', src: pic2, title: "24/7 Dedicated Support" },
+  { type: 'image', src: pic3, title: "Expert Assistance" },
+  { type: 'image', src: pic4, title: "Compassionate Healing" },
+  { type: 'image', src: pic5, title: "Specialized Care" },
+  { type: 'image', src: pic6, title: "Health Monitoring" },
+  { type: 'image', src: pic7, title: "Senior Support" },
+  { type: 'image', src: pic8, title: "Quality Healthcare" },
+  { type: 'image', src: pic9, title: "Home Nursing" },
+  { type: 'image', src: pic10, title: "Dedicated Staff" },
+  { type: 'image', src: pic11, title: "Daily Assistance" },
+  { type: 'image', src: pic12, title: "Medical Support" },
+  { type: 'image', src: pic13, title: "Trusted Professionals" },
+  { type: 'image', src: pic14, title: "Patient Recovery" },
+  // Videos
+  { type: 'video', src: video1, title: "Our Facilities in Action" },
+  { type: 'video', src: video2, title: "Patient Care Journey" },
+  { type: 'video', src: video3, title: "Physical Therapy Session" },
+  { type: 'video', src: video4, title: "Home Health Support" },
+  { type: 'video', src: video5, title: "Dedicated Team Work" },
 ];
 
 const Gallery = () => {
   const [selectedItem, setSelectedItem] = useState(null);
+  const [filter, setFilter] = useState('all'); // 'all', 'image', 'video'
+  const [visibleCount, setVisibleCount] = useState(4);
+
+  // Filter and sort items based on current tab
+  const filteredData = useMemo(() => {
+    let items = [];
+    if (filter === 'all') {
+      // In "All" tab: show images first, then videos
+      const images = galleryData.filter(item => item.type === 'image');
+      const videos = galleryData.filter(item => item.type === 'video');
+      items = [...images, ...videos];
+    } else {
+      items = galleryData.filter(item => item.type === filter);
+    }
+    return items;
+  }, [filter]);
+
+  const displayedData = filteredData.slice(0, visibleCount);
+  const hasMore = visibleCount < filteredData.length;
+  const isExpanded = visibleCount > 4;
+
+  const handleToggleShow = () => {
+    if (hasMore) {
+      // Load more
+      setVisibleCount(prev => prev + 4);
+    } else {
+      // Show less (reset to 4)
+      setVisibleCount(4);
+    }
+  };
+
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+    setVisibleCount(4); // Reset to 4 items when switching tabs
+  };
 
   return (
     <section id="gallery" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-primary font-semibold tracking-wider uppercase mb-3 text-sm">Gallery</h2>
           <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-800 mb-4">
             A Glimpse Into Our Work
@@ -35,30 +107,105 @@ const Gallery = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px] md:auto-rows-[250px]">
-          {galleryData.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              onClick={() => setSelectedItem(item)}
-              className={`relative rounded-xl overflow-hidden group cursor-pointer ${
-                index === 0 ? 'col-span-2 row-span-2' : ''
-              } ${index === 3 ? 'col-span-2 md:col-span-1' : ''}`}
-            >
-              <img 
-                src={item.src} 
-                alt={item.title} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/40 transition-colors duration-300 flex items-center justify-center">
-                <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-medium tracking-wide">View Image</span>
-              </div>
-            </motion.div>
-          ))}
+        {/* Filters */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <button
+            onClick={() => handleFilterChange('all')}
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+              filter === 'all' 
+                ? 'bg-primary text-white shadow-md' 
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            }`}
+          >
+            <Grid size={18} />
+            All
+          </button>
+          <button
+            onClick={() => handleFilterChange('image')}
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+              filter === 'image' 
+                ? 'bg-primary text-white shadow-md' 
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            }`}
+          >
+            <ImageIcon size={18} />
+            Images
+          </button>
+          <button
+            onClick={() => handleFilterChange('video')}
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+              filter === 'video' 
+                ? 'bg-primary text-white shadow-md' 
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            }`}
+          >
+            <Film size={18} />
+            Videos
+          </button>
         </div>
+
+        {/* Grid Display */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[250px] transition-all duration-500">
+          <AnimatePresence mode="popLayout">
+            {displayedData.map((item, index) => (
+              <motion.div
+                layout
+                key={item.src}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+                onClick={() => setSelectedItem(item)}
+                className={`relative rounded-xl overflow-hidden group cursor-pointer shadow-sm hover:shadow-xl ${
+                  index === 0 && displayedData.length > 1 ? 'md:col-span-2 md:row-span-2' : ''
+                }`}
+              >
+                {item.type === 'image' ? (
+                  <img 
+                    src={item.src} 
+                    alt={item.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="relative w-full h-full bg-slate-900">
+                    <video 
+                      src={item.src}
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+                      muted
+                      playsInline
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-primary/90 transition-colors duration-300">
+                        <Play className="text-white ml-1" size={24} fill="currentColor" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <span className="text-white font-semibold text-lg drop-shadow-md transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    {item.title}
+                  </span>
+                  <span className="text-primary-light text-sm capitalize font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                    View {item.type}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Load More / Show Less Button */}
+        {filteredData.length > 4 && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={handleToggleShow}
+              className="inline-flex items-center justify-center px-8 py-3.5 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full font-bold transition-colors duration-300 shadow-sm"
+            >
+              {hasMore ? 'Load More' : 'Show Less'}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Lightbox Modal */}
@@ -91,11 +238,21 @@ const Gallery = () => {
               <h4 className="text-2xl md:text-4xl font-serif font-bold text-white mb-6 text-center drop-shadow-lg">
                 {selectedItem.title}
               </h4>
-              <img 
-                src={selectedItem.src} 
-                alt={selectedItem.title} 
-                className="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl"
-              />
+              
+              {selectedItem.type === 'image' ? (
+                <img 
+                  src={selectedItem.src} 
+                  alt={selectedItem.title} 
+                  className="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl"
+                />
+              ) : (
+                <video 
+                  src={selectedItem.src} 
+                  controls
+                  autoPlay
+                  className="max-w-full max-h-[75vh] w-full bg-black rounded-lg shadow-2xl"
+                />
+              )}
             </motion.div>
           </motion.div>
         )}
