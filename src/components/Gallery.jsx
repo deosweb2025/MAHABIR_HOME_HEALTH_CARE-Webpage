@@ -58,7 +58,7 @@ const galleryData = [
 const Gallery = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [filter, setFilter] = useState('all'); // 'all', 'image', 'video'
-  const [visibleCount, setVisibleCount] = useState(4);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   // Filter and sort items based on current tab
   const filteredData = useMemo(() => {
@@ -76,21 +76,20 @@ const Gallery = () => {
 
   const displayedData = filteredData.slice(0, visibleCount);
   const hasMore = visibleCount < filteredData.length;
-  const isExpanded = visibleCount > 4;
 
   const handleToggleShow = () => {
     if (hasMore) {
-      // Load more
-      setVisibleCount(prev => prev + 4);
+      // Load more (adds exactly 1 row of 3)
+      setVisibleCount(prev => prev + 3);
     } else {
-      // Show less (reset to 4)
-      setVisibleCount(4);
+      // Show less (reset to initial state depending on tab)
+      setVisibleCount(filter === 'video' ? 3 : 6);
     }
   };
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
-    setVisibleCount(4); // Reset to 4 items when switching tabs
+    setVisibleCount(newFilter === 'video' ? 3 : 6); // 3 items form a perfect featured block
   };
 
   return (
@@ -145,7 +144,7 @@ const Gallery = () => {
         </div>
 
         {/* Grid Display */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[250px] transition-all duration-500">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[250px] transition-all duration-500">
           <AnimatePresence mode="popLayout">
             {displayedData.map((item, index) => (
               <motion.div
@@ -157,7 +156,7 @@ const Gallery = () => {
                 transition={{ duration: 0.4 }}
                 onClick={() => setSelectedItem(item)}
                 className={`relative rounded-xl overflow-hidden group cursor-pointer shadow-sm hover:shadow-xl ${
-                  index === 0 && displayedData.length > 1 ? 'md:col-span-2 md:row-span-2' : ''
+                  index === 0 && displayedData.length >= 3 ? 'md:col-span-2 md:row-span-2' : ''
                 }`}
               >
                 {item.type === 'image' ? (
