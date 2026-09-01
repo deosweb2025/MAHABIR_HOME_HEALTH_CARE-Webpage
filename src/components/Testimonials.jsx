@@ -48,15 +48,15 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-8 px-4 md:py-16 md:px-8 bg-teal-50/30 relative font-sans">
+    <section id="testimonials" className="py-8 px-4 md:py-16 md:px-8 bg-brand-ivory dark:bg-slate-900 relative font-sans transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-primary font-semibold tracking-wider uppercase mb-3 text-sm">Testimonials</h2>
-          <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-800 mb-4">
+          <h2 className="text-accent dark:text-teal-400 font-semibold tracking-wider uppercase mb-3 text-sm">Testimonials</h2>
+          <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary dark:text-white mb-4">
             What Our Clients Say
           </h3>
-          <p className="text-lg text-slate-600 font-sans">
+          <p className="text-lg text-secondary dark:text-slate-300 font-sans">
             Share your experience with our care team. Your feedback helps us improve and helps others make the right choice.
           </p>
         </div>
@@ -66,22 +66,22 @@ const Testimonials = () => {
           
           {/* Left Side: Core Commitments (5 columns) */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full justify-center">
-              <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
-                <Heart className="text-primary" size={24} />
+            <div className="bg-brand-mint dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col h-full justify-center transition-colors">
+              <div className="w-12 h-12 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center mb-4">
+                <Heart className="text-primary dark:text-teal-400" size={24} />
               </div>
-              <h4 className="text-xl font-bold text-slate-800 mb-3">Compassionate Care</h4>
-              <p className="text-slate-600 leading-relaxed font-sans">
+              <h4 className="text-xl font-bold text-primary dark:text-white mb-3">Compassionate Care</h4>
+              <p className="text-secondary dark:text-slate-300 leading-relaxed font-sans">
                 We believe in treating every patient like our own family. Our approach is rooted in empathy, respect, and deep compassion for the well-being of your loved ones.
               </p>
             </div>
             
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-full justify-center">
-              <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
-                <ShieldCheck className="text-primary" size={24} />
+            <div className="bg-brand-mint dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col h-full justify-center transition-colors">
+              <div className="w-12 h-12 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center mb-4">
+                <ShieldCheck className="text-primary dark:text-teal-400" size={24} />
               </div>
-              <h4 className="text-xl font-bold text-slate-800 mb-3">Verified Professionals</h4>
-              <p className="text-slate-600 leading-relaxed font-sans">
+              <h4 className="text-xl font-bold text-primary dark:text-white mb-3">Verified Professionals</h4>
+              <p className="text-secondary dark:text-slate-300 leading-relaxed font-sans">
                 Every member of our nursing and caregiving staff goes through rigorous background checks and continuous training to guarantee hospital-grade safety at home.
               </p>
             </div>

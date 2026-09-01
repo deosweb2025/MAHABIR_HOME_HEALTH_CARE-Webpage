@@ -26,7 +26,7 @@ const reasons = [
 
 const WhyChooseUs = () => {
   return (
-    <section id="why-choose-us" className="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="why-choose-us" className="py-24 bg-brand-ivory dark:bg-slate-900 relative overflow-hidden transition-colors duration-300">
       {/* Decorative background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-5%] w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
@@ -35,11 +35,11 @@ const WhyChooseUs = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-primary font-semibold tracking-wider uppercase mb-3 text-sm">Why Choose Us</h2>
-          <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-800 mb-4">
+          <h2 className="text-accent dark:text-teal-400 font-semibold tracking-wider uppercase mb-3 text-sm">Why Choose Us</h2>
+          <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary dark:text-white mb-4">
             Committed to Excellence in Care
           </h3>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-secondary dark:text-slate-300">
             We understand that choosing a health care provider for your family is a major decision. Here is why families trust us with their loved ones.
           </p>
         </div>
@@ -52,7 +52,7 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative rounded-2xl overflow-hidden bg-slate-100 p-[3px] shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(13,148,136,0.15)] transition-shadow duration-300"
+              className="group relative rounded-2xl overflow-hidden bg-brand-mint dark:bg-slate-800 p-[3px] shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(13,148,136,0.15)] dark:hover:shadow-[0_8px_30px_rgba(13,148,136,0.3)] transition-shadow duration-300"
             >
               {/* Animated Border (Radar/Snake Glow) */}
               <div 
@@ -61,12 +61,12 @@ const WhyChooseUs = () => {
               ></div>
               
               {/* Card Inner Content */}
-              <div className="relative h-full bg-white rounded-xl p-8 flex flex-col z-10 transition-all duration-300">
-                <div className="w-16 h-16 rounded-xl bg-teal-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="relative h-full bg-white dark:bg-slate-900 rounded-xl p-8 flex flex-col z-10 transition-colors duration-300">
+                <div className="w-16 h-16 rounded-xl bg-teal-50 dark:bg-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   {reason.icon}
                 </div>
-                <h4 className="text-xl font-bold text-slate-800 mb-3">{reason.title}</h4>
-                <p className="text-slate-600 text-sm leading-relaxed">
+                <h4 className="text-xl font-bold text-primary dark:text-white mb-3">{reason.title}</h4>
+                <p className="text-secondary dark:text-slate-300 text-sm leading-relaxed">
                   {reason.description}
                 </p>
               </div>

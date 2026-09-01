@@ -19,7 +19,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-[85vh] md:min-h-[90vh] w-full overflow-hidden bg-slate-900">
+    <section id="home" className="relative min-h-[85vh] md:min-h-[90vh] w-full overflow-hidden bg-slate-900 mt-[72px] sm:mt-[80px] lg:mt-[96px]">
       {/* Image Slider */}
       <AnimatePresence mode="popLayout">
         <motion.img
@@ -49,18 +49,18 @@ const Hero = () => {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30 backdrop-blur-sm mb-4 md:mb-6 text-teal-300 text-xs md:text-sm font-medium">
               <HeartPulse size={16} />
-              <span>Trusted Home Health Care Services</span>
+              <span>Trusted care, brought home.</span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight mb-4 md:mb-6 tracking-wide drop-shadow-lg">
-              Compassionate Nursing Care <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-300 drop-shadow-sm">
-                In Your Home
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight mb-4 md:mb-6 tracking-wide drop-shadow-lg">
+              Care That <br className="hidden sm:block" />
+              <span className="text-accent drop-shadow-sm">
+                Feels Close.
               </span>
             </h1>
             
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-slate-200 mb-6 md:mb-8 max-w-xl leading-relaxed font-medium drop-shadow">
-              Professional nursing, elder care, child care, and physiotherapy services available 24/7. We bring hospital-quality care to your doorstep.
+              Nursing, physiotherapy, patient attendants and medical equipment - coordinated for your family at home.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8">

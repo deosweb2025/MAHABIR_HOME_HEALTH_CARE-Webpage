@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap');
 @import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
 
 @layer utilities {
   @keyframes shimmer {
@@ -8,16 +10,19 @@
 }
 
 @theme {
-  --color-primary: #0d9488;
-  --color-primary-dark: #0f766e;
-  --color-secondary: #1e293b;
-  --color-accent: #f59e0b;
+  --color-primary: #075E5A;
+  --color-primary-dark: #054a47;
+  --color-secondary: #253238; /* Charcoal */
+  --color-accent: #F2A51A; /* Marigold */
+  --color-brand-ivory: #FFF9EF;
+  --color-brand-mint: #DDEDEA;
+  
   --font-sans: 'Inter', sans-serif;
-  --font-serif: 'Lora', serif;
+  --font-serif: 'Manrope', sans-serif; /* Using serif class name so existing components automatically use Manrope for headings */
 }
 
 body {
-  @apply bg-slate-50 text-slate-800 antialiased overflow-x-hidden font-sans;
+  @apply bg-brand-ivory text-secondary antialiased overflow-x-hidden font-sans transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100;
 }
 
 html {
@@ -26,5 +31,5 @@ html {
 
 /* Custom styles for animations or specific sections */
 .glass-effect {
-  @apply bg-white/70 backdrop-blur-md border border-white/20;
+  @apply bg-white/70 dark:bg-slate-800/70 backdrop-blur-md border border-white/20 dark:border-slate-700/50;
 }

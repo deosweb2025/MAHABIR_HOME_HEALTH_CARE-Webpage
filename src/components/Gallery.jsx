@@ -12,13 +12,11 @@ import pic4 from '../assets/images/pic4.jpeg';
 
 // Images mistakenly placed in videos folder
 import pic5 from '../assets/videos/pic5.jpeg';
-import pic6 from '../assets/videos/pic6.jpeg';
-import pic7 from '../assets/videos/pic7.jpeg';
-import pic9 from '../assets/videos/pic9.jpeg';
 import pic10 from '../assets/videos/pic10.jpeg';
 
 // Videos
 import video4 from '../assets/videos/videos4.mp4';
+import video5 from '../assets/videos/videos5.mp4';
 
 const galleryData = [
   // Images
@@ -29,12 +27,10 @@ const galleryData = [
   { type: 'image', src: pic3, title: "Expert Assistance" },
   { type: 'image', src: pic4, title: "Compassionate Healing" },
   { type: 'image', src: pic5, title: "Specialized Care" },
-  { type: 'image', src: pic6, title: "Health Monitoring" },
-  { type: 'image', src: pic7, title: "Senior Support" },
-  { type: 'image', src: pic9, title: "Home Nursing" },
   { type: 'image', src: pic10, title: "Dedicated Staff" },
   // Videos
   { type: 'video', src: video4, title: "Home Health Support" },
+  { type: 'video', src: video5, title: "Our Care Process" },
 ];
 
 const Gallery = () => {
@@ -75,15 +71,15 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="py-24 bg-white relative">
+    <section id="gallery" className="py-24 bg-brand-ivory dark:bg-slate-950 relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-primary font-semibold tracking-wider uppercase mb-3 text-sm">Gallery</h2>
-          <h3 className="text-3xl md:text-4xl font-serif font-bold text-slate-800 mb-4">
+          <h2 className="text-accent dark:text-teal-400 font-semibold tracking-wider uppercase mb-3 text-sm">Gallery</h2>
+          <h3 className="text-3xl md:text-4xl font-serif font-bold text-primary dark:text-white mb-4">
             A Glimpse Into Our Work
           </h3>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-secondary dark:text-slate-300">
             See how we deliver care, compassion, and professional assistance every single day.
           </p>
         </div>
